@@ -1,6 +1,7 @@
 
 package ifrs.computacao.biblioteca;
 
+import ifrs.computacao.biblioteca.bdConections.JpaUtil;
 import ifrs.computacao.biblioteca.navigation.NavigationController;
 import ifrs.computacao.biblioteca.navigation.Page;
 
@@ -19,6 +20,11 @@ public class App extends Application {
         navigationController.navigateTo(Page.WELCOME);
 
         stage.show();
+    }
+
+    @Override
+    public void stop() {
+        JpaUtil.fechar();
     }
 
 }
