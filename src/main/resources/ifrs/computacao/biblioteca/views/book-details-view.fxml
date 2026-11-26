@@ -3,29 +3,402 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="ifrs.computacao.biblioteca.controller.BookDetailsController"
-      alignment="CENTER"
-      spacing="20">
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ifrs.computacao.biblioteca.controller.BookDetailsController"
+            prefWidth="980"
+            prefHeight="760"
+            stylesheets="@styles/BookDetails.css"
+            styleClass="details-root">
+
+    <center>
+        <VBox spacing="20">
+
+            <!-- CABEÇALHO DO LIVRO -->
+            <HBox spacing="28" styleClass="book-header">
+
+                <!-- CAPA -->
+                <StackPane prefWidth="180"
+                           minWidth="180"
+                           prefHeight="260"
+                           styleClass="book-cover">
+
+                    <VBox alignment="BOTTOM_LEFT"
+                          spacing="8"
+                          styleClass="cover-content">
+
+                        <Label text="Dom Casmurro"
+                               wrapText="true"
+                               styleClass="cover-title"/>
+
+                    </VBox>
+
+                </StackPane>
+
+                <!-- INFORMAÇÕES PRINCIPAIS -->
+                <VBox spacing="10" HBox.hgrow="ALWAYS">
+
+                    <Label text="ROMANCE · PORTUGUÊS · 256 PÁGINAS"
+                           styleClass="book-meta"/>
+
+                    <Label text="Dom Casmurro"
+                           styleClass="book-title"/>
+
+                    <Label text="Machado de Assis · Editora Garnier · 1899"
+                           styleClass="book-author"/>
+
+                    <!-- STATUS E TAGS -->
+                    <HBox spacing="8" styleClass="book-tags">
+
+                        <Label text="Concluído"
+                               styleClass="tag-status"/>
+
+                        <Label text="clássico"
+                               styleClass="tag-normal"/>
+
+                        <Label text="releitura"
+                               styleClass="tag-normal"/>
+
+                    </HBox>
+
+                    <!-- AVALIAÇÃO -->
+                    <HBox spacing="6" alignment="CENTER_LEFT">
+
+                        <Label text="★★★★★"
+                               styleClass="book-rating"/>
+
+                        <Label text="Lido 2 vezes"
+                               styleClass="rating-description"/>
+
+                    </HBox>
+
+                    <!-- SINOPSE -->
+                    <Label text="Bento Santiago revisita a juventude e o ciúme que moldou sua vida. [Sinopse do livro]"
+                           wrapText="true"
+                           styleClass="book-synopsis"/>
+
+                </VBox>
+
+                <!-- AÇÕES -->
+                <VBox spacing="8" prefWidth="115">
+
+                    <Button fx:id="newReadingButton"
+                            text="Nova leitura"
+                            maxWidth="Infinity"
+                            styleClass="primary-button"/>
+
+                    <Button fx:id="editBookButton"
+                            text="Editar"
+                            maxWidth="Infinity"
+                            styleClass="secondary-button"/>
+
+                </VBox>
+
+            </HBox>
+
+            <!-- NAVEGAÇÃO INTERNA -->
+            <TabPane fx:id="detailsTabPane"
+                     tabClosingPolicy="UNAVAILABLE"
+                     VBox.vgrow="ALWAYS"
+                     styleClass="details-tabs">
+
+                <!-- ABA: LEITURAS -->
+                <Tab text="Leituras">
+
+                    <HBox spacing="14" styleClass="tab-content">
+
+                        <!-- HISTÓRICO DE LEITURAS -->
+                        <VBox spacing="15"
+                              HBox.hgrow="ALWAYS"
+                              styleClass="content-card">
+
+                            <Label text="Linha do tempo de leituras"
+                                   styleClass="section-title"/>
+
+                            <VBox spacing="15"
+                                  styleClass="reading-timeline">
+
+                                <VBox spacing="5"
+                                      styleClass="timeline-entry">
+
+                                    <Label text="2ª leitura · 05/06/2026 → 20/06/2026 · ★★★★☆"
+                                           styleClass="timeline-title"/>
+
+                                    <Label text="&quot;Percebi mais ironia dessa vez.&quot;"
+                                           styleClass="timeline-description"/>
+
+                                </VBox>
+
+                                <VBox spacing="5"
+                                      styleClass="timeline-entry">
+
+                                    <Label text="1ª leitura · 10/01/2025 → 25/01/2025 · ★★★★★"
+                                           styleClass="timeline-title"/>
+
+                                    <Label text="&quot;Fiquei preso à dúvida sobre Capitu.&quot;"
+                                           styleClass="timeline-description"/>
+
+                                </VBox>
+
+                            </VBox>
+
+                            <Button fx:id="compareReadingsButton"
+                                    text="Comparar leituras"
+                                    styleClass="secondary-button"
+                                    maxWidth="170"/>
+
+                        </VBox>
+
+                        <!-- COLUNA LATERAL -->
+                        <VBox spacing="14"
+                              prefWidth="300"
+                              minWidth="260">
+
+                            <!-- PROGRESSO -->
+                            <VBox spacing="12"
+                                  styleClass="content-card">
+
+                                <Label text="Progresso"
+                                       styleClass="section-title"/>
+
+                                <ProgressBar progress="1.0"
+                                             maxWidth="Infinity"
+                                             styleClass="reading-progress"/>
+
+                                <Label text="256 de 256 páginas · 100%"
+                                       styleClass="progress-description"/>
+
+                            </VBox>
+
+                            <!-- CITAÇÃO FAVORITA -->
+                            <VBox spacing="12"
+                                  styleClass="quote-card">
+
+                                <Label text="“Citação favorita aparece aqui, como página de diário.”"
+                                       wrapText="true"
+                                       styleClass="favorite-quote"/>
+
+                                <Label text="p. 112 · 14/01/2025"
+                                       styleClass="quote-reference"/>
+
+                            </VBox>
+
+                        </VBox>
+
+                    </HBox>
+
+                </Tab>
+
+                <!-- ABA: PROGRESSO -->
+                <Tab text="Progresso">
+
+                    <VBox spacing="18" styleClass="tab-content">
+
+                        <VBox spacing="12" styleClass="content-card">
+
+                            <Label text="Sua jornada de leitura"
+                                   styleClass="section-title"/>
+
+                            <Label text="256 de 256 páginas concluídas"
+                                   styleClass="progress-heading"/>
+
+                            <ProgressBar progress="1.0"
+                                         maxWidth="Infinity"
+                                         styleClass="reading-progress"/>
+
+                            <Label text="100% concluído"
+                                   styleClass="progress-description"/>
+
+                        </VBox>
+
+                        <VBox spacing="12" styleClass="content-card">
+
+                            <Label text="Histórico diário"
+                                   styleClass="section-title"/>
+
+                            <Label text="14/06/2026 · 25 páginas lidas"
+                                   styleClass="timeline-description"/>
+
+                            <Label text="15/06/2026 · 18 páginas lidas"
+                                   styleClass="timeline-description"/>
+
+                            <Label text="16/06/2026 · 32 páginas lidas"
+                                   styleClass="timeline-description"/>
+
+                        </VBox>
+
+                    </VBox>
+
+                </Tab>
+
+                <!-- ABA: ANOTAÇÕES -->
+                <Tab text="Anotações (12)">
+
+                    <VBox spacing="15" styleClass="tab-content">
+
+                        <HBox alignment="CENTER_LEFT">
+                            <Label text="Minhas anotações"
+                                   styleClass="section-title"/>
+
+                            <Region HBox.hgrow="ALWAYS"/>
+
+                            <Button text="Nova anotação"
+                                    styleClass="primary-button"/>
+                        </HBox>
+
+                        <VBox spacing="8" styleClass="content-card">
+
+                            <Label text="Sobre a narrativa"
+                                   styleClass="note-title"/>
+
+                            <Label text="A construção da memória pelo narrador torna difícil distinguir os acontecimentos reais das interpretações pessoais."
+                                   wrapText="true"
+                                   styleClass="note-description"/>
+
+                            <Label text="Página 45 · 12/06/2026"
+                                   styleClass="note-reference"/>
+
+                        </VBox>
+
+                        <VBox spacing="8" styleClass="content-card">
+
+                            <Label text="A dúvida sobre Capitu"
+                                   styleClass="note-title"/>
+
+                            <Label text="O livro provoca uma reflexão interessante sobre ciúme, confiança e memória."
+                                   wrapText="true"
+                                   styleClass="note-description"/>
+
+                            <Label text="Página 112 · 15/06/2026"
+                                   styleClass="note-reference"/>
+
+                        </VBox>
+
+                    </VBox>
+
+                </Tab>
+
+                <!-- ABA: CITAÇÕES -->
+                <Tab text="Citações (7)">
+
+                    <VBox spacing="15" styleClass="tab-content">
+
+                        <HBox alignment="CENTER_LEFT">
+                            <Label text="Citações favoritas"
+                                   styleClass="section-title"/>
+
+                            <Region HBox.hgrow="ALWAYS"/>
+
+                            <Button text="Nova citação"
+                                    styleClass="primary-button"/>
+                        </HBox>
+
+                        <VBox spacing="10" styleClass="quote-card">
+
+                            <Label text="“Não consultes dicionários. Casmurro não está aqui no sentido que eles lhe dão, mas no que lhe pôs o vulgo de homem calado e metido consigo.”"
+                                   wrapText="true"
+                                   styleClass="favorite-quote"/>
+
+                            <Label text="Página 2"
+                                   styleClass="quote-reference"/>
+
+                        </VBox>
+
+                        <VBox spacing="10" styleClass="quote-card">
+
+                            <Label text="“A vida é cheia de obrigações que a gente cumpre por mais vontade que tenha de as infringir.”"
+                                   wrapText="true"
+                                   styleClass="favorite-quote"/>
+
+                            <Label text="Página 112"
+                                   styleClass="quote-reference"/>
+
+                        </VBox>
+
+                    </VBox>
+
+                </Tab>
+
+                <!-- ABA: INFORMAÇÕES -->
+                <Tab text="Informações">
+
+                    <VBox spacing="15" styleClass="tab-content">
+
+                        <VBox spacing="14" styleClass="content-card">
+
+                            <Label text="Dados bibliográficos"
+                                   styleClass="section-title"/>
+
+                            <VBox spacing="8">
+                                <Label text="Título: Dom Casmurro"
+                                       styleClass="info-description"/>
+
+                                <Label text="Autor: Machado de Assis"
+                                       styleClass="info-description"/>
+
+                                <Label text="Editora: Garnier"
+                                       styleClass="info-description"/>
+
+                                <Label text="Publicação: 1899"
+                                       styleClass="info-description"/>
+
+                                <Label text="ISBN: Não informado"
+                                       styleClass="info-description"/>
+
+                                <Label text="Idioma: Português"
+                                       styleClass="info-description"/>
+
+                                <Label text="Gênero: Romance"
+                                       styleClass="info-description"/>
+
+                                <Label text="Páginas: 256"
+                                       styleClass="info-description"/>
+
+                            </VBox>
+
+                        </VBox>
+
+                        <VBox spacing="14" styleClass="content-card">
+
+                            <Label text="Aquisição e organização"
+                                   styleClass="section-title"/>
+
+                            <Label text="Formato: Físico"
+                                   styleClass="info-description"/>
+
+                            <Label text="Data de aquisição: Não informada"
+                                   styleClass="info-description"/>
+
+                            <Label text="Preço: Não informado"
+                                   styleClass="info-description"/>
+
+                            <Label text="Status: Concluído"
+                                   styleClass="info-description"/>
+
+                        </VBox>
+
+                    </VBox>
+
+                </Tab>
+
+            </TabPane>
+
+        </VBox>
+    </center>
 
     <padding>
-        <Insets top="40" right="40" bottom="40" left="40"/>
+        <Insets top="30" right="30" bottom="30" left="30"/>
     </padding>
 
-    <Label text="Minha coleção"
-           style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
-
-    <Label text="Aqui serão apresentados os livros cadastrados."/>
-
-    <Button text="Cadastrar novo livro"
-            onAction="#onCreateBookClick"
-            prefWidth="200"/>
-
-    <Button text="Voltar ao início"
-            onAction="#onBackClick"
-            prefWidth="200"/>
-
-</VBox>
+</BorderPane>

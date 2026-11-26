@@ -3,29 +3,280 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="ifrs.computacao.biblioteca.controller.BookFormController"
-      alignment="CENTER"
-      spacing="20">
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ifrs.computacao.biblioteca.controller.BookFormController"
+            prefWidth="980"
+            prefHeight="760"
+            stylesheets="@styles/BookForm.css"
+            styleClass="book-form-root">
+
+    <fx:define>
+        <ToggleGroup fx:id="statusGroup"/>
+    </fx:define>
+
+    <!-- CABEÇALHO -->
+    <top>
+        <VBox spacing="5" styleClass="page-header">
+            <Label text="Adicionar livro" styleClass="page-title"/>
+            <Label text="Só o título é obrigatório. O resto pode ficar para depois."
+                   styleClass="page-subtitle"/>
+        </VBox>
+    </top>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <center>
+        <HBox spacing="14" styleClass="main-content">
+
+            <!-- ÁREA DA CAPA -->
+            <VBox spacing="12"
+                  prefWidth="190"
+                  minWidth="170"
+                  styleClass="cover-card">
+
+                <StackPane prefHeight="220"
+                           maxHeight="220"
+                           styleClass="cover-placeholder">
+
+                    <VBox alignment="CENTER" spacing="8">
+                        <Label text="▧" styleClass="cover-icon"/>
+                        <Label text="Arraste a capa ou&#10;busque pelo ISBN"
+                               styleClass="cover-placeholder-text"
+                               textAlignment="CENTER"/>
+                    </VBox>
+
+                </StackPane>
+
+                <Button text="Escolher imagem"
+                        maxWidth="Infinity"
+                        styleClass="secondary-button"/>
+
+                <Label text="Sem capa? Geramos uma capa tipográfica."
+                       wrapText="true"
+                       styleClass="helper-text"/>
+
+            </VBox>
+
+            <!-- FORMULÁRIO -->
+            <VBox spacing="14" HBox.hgrow="ALWAYS">
+
+                <!-- INFORMAÇÕES DO LIVRO -->
+                <VBox spacing="15" styleClass="form-card">
+
+                    <Label text="O livro" styleClass="section-title"/>
+
+                    <!-- TÍTULO E SUBTÍTULO -->
+                    <GridPane hgap="14" vgap="6">
+
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="65"/>
+                            <ColumnConstraints percentWidth="35"/>
+                        </columnConstraints>
+
+                        <VBox spacing="6" GridPane.columnIndex="0">
+                            <Label text="TÍTULO *" styleClass="field-label"/>
+                            <TextField fx:id="titleField"
+                                       promptText="Título do livro"
+                                       styleClass="form-field"/>
+                        </VBox>
+
+                        <VBox spacing="6" GridPane.columnIndex="1">
+                            <Label text="SUBTÍTULO" styleClass="field-label"/>
+                            <TextField fx:id="subtitleField"
+                                       promptText="Subtítulo"
+                                       styleClass="form-field"/>
+                        </VBox>
+
+                    </GridPane>
+
+                    <!-- AUTOR, EDITORA E ISBN -->
+                    <GridPane hgap="14" vgap="6">
+
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="48"/>
+                            <ColumnConstraints percentWidth="26"/>
+                            <ColumnConstraints percentWidth="26"/>
+                        </columnConstraints>
+
+                        <VBox spacing="6" GridPane.columnIndex="0">
+                            <Label text="AUTOR(ES)" styleClass="field-label"/>
+                            <TextField fx:id="authorField"
+                                       promptText="Nome do autor"
+                                       styleClass="form-field"/>
+                        </VBox>
+
+                        <VBox spacing="6" GridPane.columnIndex="1">
+                            <Label text="EDITORA" styleClass="field-label"/>
+                            <TextField fx:id="publisherField"
+                                       promptText="Editora"
+                                       styleClass="form-field"/>
+                        </VBox>
+
+                        <VBox spacing="6" GridPane.columnIndex="2">
+                            <Label text="ISBN" styleClass="field-label"/>
+                            <TextField fx:id="isbnField"
+                                       promptText="Opcional"
+                                       styleClass="form-field"/>
+                        </VBox>
+
+                    </GridPane>
+
+                    <!-- GÊNERO, IDIOMA, PÁGINAS E ANO -->
+                    <GridPane hgap="14" vgap="6">
+
+                        <columnConstraints>
+                            <ColumnConstraints percentWidth="25"/>
+                            <ColumnConstraints percentWidth="25"/>
+                            <ColumnConstraints percentWidth="25"/>
+                            <ColumnConstraints percentWidth="25"/>
+                        </columnConstraints>
+
+                        <VBox spacing="6" GridPane.columnIndex="0">
+                            <Label text="GÊNERO" styleClass="field-label"/>
+                            <TextField fx:id="genreField"
+                                       promptText="Gênero"
+                                       styleClass="form-field"/>
+                        </VBox>
+
+                        <VBox spacing="6" GridPane.columnIndex="1">
+                            <Label text="IDIOMA" styleClass="field-label"/>
+                            <TextField fx:id="languageField"
+                                       text="Português"
+                                       styleClass="form-field"/>
+                        </VBox>
+
+                        <VBox spacing="6" GridPane.columnIndex="2">
+                            <Label text="PÁGINAS" styleClass="field-label"/>
+                            <TextField fx:id="pagesField"
+                                       promptText="Ex: 320"
+                                       styleClass="form-field"/>
+                        </VBox>
+
+                        <VBox spacing="6" GridPane.columnIndex="3">
+                            <Label text="ANO" styleClass="field-label"/>
+                            <TextField fx:id="yearField"
+                                       promptText="Ex: 2025"
+                                       styleClass="form-field"/>
+                        </VBox>
+
+                    </GridPane>
+
+                </VBox>
+
+                <!-- ORGANIZAÇÃO PESSOAL -->
+                <VBox spacing="14" styleClass="form-card">
+
+                    <Label text="Sua organização" styleClass="section-title"/>
+
+                    <VBox spacing="8">
+                        <Label text="STATUS" styleClass="field-label"/>
+
+                        <FlowPane hgap="8" vgap="8">
+
+                            <ToggleButton text="Quero comprar"
+                                          toggleGroup="$statusGroup"
+                                          styleClass="status-button"/>
+
+                            <ToggleButton text="Quero ler"
+                                          toggleGroup="$statusGroup"
+                                          selected="true"
+                                          styleClass="status-button"/>
+
+                            <ToggleButton text="Disponível"
+                                          toggleGroup="$statusGroup"
+                                          styleClass="status-button"/>
+
+                            <ToggleButton text="Lendo"
+                                          toggleGroup="$statusGroup"
+                                          styleClass="status-button"/>
+
+                            <ToggleButton text="Pausado"
+                                          toggleGroup="$statusGroup"
+                                          styleClass="status-button"/>
+
+                            <ToggleButton text="Concluído"
+                                          toggleGroup="$statusGroup"
+                                          styleClass="status-button"/>
+
+                            <ToggleButton text="Abandonado"
+                                          toggleGroup="$statusGroup"
+                                          styleClass="status-button"/>
+
+                        </FlowPane>
+                    </VBox>
+
+                    <!-- PRIORIDADE, TAGS E AVALIAÇÃO -->
+                    <HBox spacing="14">
+
+                        <VBox spacing="6" prefWidth="145">
+                            <Label text="PRIORIDADE" styleClass="field-label"/>
+                            <TextField fx:id="priorityField"
+                                       text="Média"
+                                       styleClass="form-field"/>
+                        </VBox>
+
+                        <VBox spacing="6" HBox.hgrow="ALWAYS">
+                            <Label text="TAGS" styleClass="field-label"/>
+                            <TextField fx:id="tagsField"
+                                       promptText="+ adicionar tag"
+                                       styleClass="form-field"/>
+                        </VBox>
+
+                        <VBox spacing="6" prefWidth="150">
+                            <Label text="AVALIAÇÃO" styleClass="field-label"/>
+                            <TextField fx:id="ratingField"
+                                       promptText="☆☆☆☆☆"
+                                       styleClass="form-field"/>
+                        </VBox>
+
+                    </HBox>
+
+                </VBox>
+
+            </VBox>
+
+        </HBox>
+    </center>
+
+    <!-- RODAPÉ -->
+    <bottom>
+        <HBox spacing="12" alignment="CENTER" styleClass="form-footer">
+
+            <HBox alignment="CENTER_LEFT" spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="Informações de aquisição"
+                       styleClass="acquisition-title"/>
+                <Label text="· data, local, preço, formato, observações"
+                       styleClass="acquisition-description"/>
+            </HBox>
+
+            <Button text="Cancelar"
+                    onAction="#onBackClick"
+                    styleClass="secondary-button"
+                    minWidth="100"/>
+
+            <Button text="Salvar na biblioteca"
+                    onAction="#onSaveBookClick"
+                    styleClass="primary-button"
+                    minWidth="160"/>
+
+        </HBox>
+    </bottom>
 
     <padding>
-        <Insets top="40" right="40" bottom="40" left="40"/>
+        <Insets top="30" right="30" bottom="25" left="30"/>
     </padding>
 
-    <Label text="Cadastrar novo livro"
-           style="-fx-font-size: 28px; -fx-font-weight: bold;"/>
-
-    <Label text="Formulário de cadastro será implementado aqui."/>
-
-    <Button text="Salvar livro"
-            onAction="#onSaveBookClick"
-            prefWidth="180"/>
-
-    <Button text="Voltar"
-            onAction="#onBackClick"
-            prefWidth="180"/>
-
-</VBox>
+</BorderPane>
