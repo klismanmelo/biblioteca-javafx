@@ -1,32 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="ifrs.computacao.biblioteca.controller.WelcomeController"
-      alignment="CENTER"
-      spacing="20">
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ifrs.computacao.biblioteca.controller.WelcomeController"
+            prefWidth="980"
+            prefHeight="760"
+            stylesheets="@styles/Welcome.css"
+            styleClass="welcome-root">
+
+    <center>
+        <VBox alignment="CENTER"
+              spacing="24"
+              styleClass="welcome-content">
+
+            <VBox alignment="CENTER" spacing="8">
+                <Label text="BEM-VINDO À SUA BIBLIOTECA"
+                       styleClass="welcome-eyebrow"/>
+
+                <Label text="Um mundo inteiro&#10;entre páginas."
+                       styleClass="welcome-title"
+                       textAlignment="CENTER"
+                       wrapText="true"/>
+
+                <Label text="Cada livro é uma porta. Cada leitura, uma nova jornada."
+                       styleClass="welcome-subtitle"
+                       textAlignment="CENTER"
+                       wrapText="true"/>
+            </VBox>
+
+            <VBox alignment="CENTER"
+                  spacing="18"
+                  styleClass="quote-card">
+
+                <Label text="✦"
+                       styleClass="quote-decoration"/>
+
+                <Label text="Há mundos que só existem para aqueles que se atrevem a virar a primeira página."
+                       styleClass="quote-text"
+                       textAlignment="CENTER"
+                       wrapText="true"/>
+
+                <Label text="— Uma reflexão para todo leitor"
+                       styleClass="quote-author"/>
+
+            </VBox>
+
+            <VBox alignment="CENTER" spacing="8">
+                <Label text="SUA PRÓXIMA HISTÓRIA ESPERA POR VOCÊ."
+                       styleClass="welcome-footer-title"/>
+
+                <Label text="Organize suas leituras, registre suas descobertas&#10;e construa sua própria história, uma página de cada vez."
+                       styleClass="welcome-footer-text"
+                       textAlignment="CENTER"
+                       wrapText="true"/>
+            </VBox>
+
+        </VBox>
+    </center>
 
     <padding>
-        <Insets top="40" right="40" bottom="40" left="40"/>
+        <Insets top="40"
+                right="50"
+                bottom="40"
+                left="50"/>
     </padding>
 
-    <Label text="Minha Biblioteca"
-           style="-fx-font-size: 32px; -fx-font-weight: bold;"/>
-
-    <Label text="Sua biblioteca pessoal, organizada em um só lugar."
-           style="-fx-font-size: 16px;"/>
-
-    <Button text="Cadastrar novo livro"
-            onAction="#onCreateBookClick"
-            prefWidth="220"/>
-
-    <Button text="Visualizar livros"
-            onAction="#onViewBooksClick"
-            prefWidth="220"/>
-
-</VBox>
+</BorderPane>

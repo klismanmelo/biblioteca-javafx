@@ -1,0 +1,71 @@
+/* ===========================
+   SIDEBAR
+   Paleta usada:
+   fundo sidebar  #EBE1CA
+   card / ativo   #FBF7EC
+   borda          #E2D6BA / #D3C4A3
+   texto          #2B2118
+   texto suave    #7A6E5C
+   destaque       #7B2D26
+   =========================== */
+
+.sidebar {
+    -fx-background-color: #EBE1CA;
+    -fx-border-color: transparent #E2D6BA transparent transparent;
+    -fx-border-width: 0 1 0 0;
+    -fx-font-family: "Inter", "Helvetica Neue", "Segoe UI", sans-serif;
+}
+
+/* Cabeçalho */
+.sidebar-title {
+    -fx-font-family: "Cormorant Garamond", "EB Garamond", "Georgia", serif;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2B2118;
+    -fx-line-spacing: -4;
+}
+
+.sidebar-subtitle {
+    -fx-font-size: 9.5px;
+    -fx-text-fill: #7A6E5C;
+}
+
+/* Botões de navegação */
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 8;
+    -fx-border-color: transparent;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+    -fx-text-fill: #2B2118;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 9 12 9 12;
+    -fx-cursor: hand;
+
+    /* remove o anel azul de foco padrão */
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #E3D8BE;
+}
+
+.sidebar-button:pressed {
+    -fx-background-color: #DCCFB0;
+}
+
+/* Página ativa */
+.sidebar-button.active {
+    -fx-background-color: #FBF7EC;
+    -fx-border-color: #D3C4A3;
+    -fx-text-fill: #7B2D26;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(60, 40, 20, 0.10), 6, 0, 0, 1);
+}
+
+.sidebar-button.active:hover {
+    -fx-background-color: #FBF7EC;
+}

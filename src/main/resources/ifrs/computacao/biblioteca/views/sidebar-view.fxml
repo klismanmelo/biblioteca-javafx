@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ifrs.computacao.biblioteca.controller.SidebarController"
+      stylesheets="@styles/Sidebar.css"
+      styleClass="sidebar"
+      prefWidth="210"
+      minWidth="210"
+      maxWidth="210">
+
+    <padding>
+        <Insets top="28" right="12" bottom="20" left="12"/>
+    </padding>
+
+    <!-- Cabeçalho -->
+    <VBox styleClass="sidebar-header" spacing="4">
+        <padding>
+            <Insets left="8"/>
+        </padding>
+
+        <Label text="Minha&#10;Biblioteca" styleClass="sidebar-title" wrapText="true"/>
+        <Label text="DIÁRIO DE LEITURA" styleClass="sidebar-subtitle"/>
+    </VBox>
+
+    <Region prefHeight="28" minHeight="28"/>
+
+    <!-- Navegação -->
+    <VBox spacing="4" styleClass="sidebar-nav">
+
+        <Button fx:id="welcomeButton"
+                text="Início"
+                maxWidth="Infinity"
+                styleClass="sidebar-button"
+                onAction="#onWelcomeClick"/>
+
+        <Button fx:id="bookDetailsButton"
+                text="Minha biblioteca"
+                maxWidth="Infinity"
+                styleClass="sidebar-button"
+                onAction="#onBookDetailsClick"/>
+
+        <Button fx:id="bookFormButton"
+                text="Adicionar livro"
+                maxWidth="Infinity"
+                styleClass="sidebar-button"
+                onAction="#onBookFormClick"/>
+
+    </VBox>
+
+</VBox>

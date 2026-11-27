@@ -1,0 +1,101 @@
+
+/* =========================================
+   PALETA E ESTRUTURA GERAL
+   ========================================= */
+
+.welcome-root {
+    -fx-background-color: #F8F3E9;
+    -fx-font-family: "Arial";
+}
+
+/* =========================================
+   CONTEÚDO PRINCIPAL
+   ========================================= */
+
+.welcome-content {
+    -fx-padding: 30 40 30 40;
+}
+
+/* =========================================
+   CABEÇALHO
+   ========================================= */
+
+.welcome-eyebrow {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #93412D;
+    -fx-letter-spacing: 3px;
+}
+
+.welcome-title {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 46px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #302722;
+    -fx-line-spacing: 8px;
+}
+
+.welcome-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #76685B;
+}
+
+/* =========================================
+   CARTÃO DA FRASE
+   ========================================= */
+
+.quote-card {
+    -fx-background-color: #FFFDFA;
+    -fx-border-color: #E5D5BD;
+    -fx-border-width: 1;
+    -fx-border-radius: 14;
+    -fx-background-radius: 14;
+    -fx-padding: 35 55 35 55;
+    -fx-max-width: 570px;
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(48, 39, 34, 0.07),
+        15,
+        0,
+        0,
+        5
+    );
+}
+
+.quote-decoration {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 25px;
+    -fx-text-fill: #963F2B;
+}
+
+.quote-text {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 22px;
+    -fx-font-style: italic;
+    -fx-text-fill: #302722;
+    -fx-line-spacing: 7px;
+}
+
+.quote-author {
+    -fx-font-family: "Georgia";
+    -fx-font-size: 12px;
+    -fx-font-style: italic;
+    -fx-text-fill: #A18D75;
+}
+
+/* =========================================
+   MENSAGEM INFERIOR
+   ========================================= */
+
+.welcome-footer-title {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #93412D;
+    -fx-letter-spacing: 2px;
+}
+
+.welcome-footer-text {
+    -fx-font-size: 13px;
+    -fx-text-fill: #76685B;
+    -fx-line-spacing: 5px;
+}
