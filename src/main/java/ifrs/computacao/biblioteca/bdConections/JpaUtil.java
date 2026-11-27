@@ -12,6 +12,10 @@ public final class JpaUtil {
     private JpaUtil() {
     }
 
+    public static EntityManagerFactory getEntityManagerFactory() {
+        return FACTORY;
+    }
+
     public static EntityManager criarEntityManager() {
         return FACTORY.createEntityManager();
     }
